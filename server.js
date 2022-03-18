@@ -9,7 +9,7 @@ const {shuffleArray} = require('./utils')
 // include and initialize the rollbar library with your access token
 var Rollbar = require('rollbar')
 var rollbar = new Rollbar({
-  accessToken: '5eee03b214044fe5bdd70a4b768d0a63',
+  accessToken: 'df4407f109104d8596a01ee49327f79e',
   captureUncaught: true,
   captureUnhandledRejections: true,
 })
