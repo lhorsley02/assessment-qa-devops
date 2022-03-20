@@ -17,12 +17,30 @@ test('Title shows up when page loads', async () => {
     const title = await driver.findElement(By.id('title'))
     const displayed = await title.isDisplayed()
     expect(displayed).toBe(true)
+
+    await driver.sleep(3000)
 })
 
-test('Clicking Draw button displays "choices"', async () => {
-    const draw = await driver.findElement(By.id('draw'))
-    const clickDraw = await draw.click()
-    const choices = await driver.findElement(By.id('choices'))
-    const displayedChoices = await choices.isDisplayed()
-    expect(clickDraw).toHaveReturnedWith(displayedChoices)
+test('Make sure all bots display when "All Bots" button is clicked', async() => {
+    let allBtn = await driver.findElement(By.id('see-all'))
+    await allBtn.click()
+
+    let displayedBots = await driver.findElement(By.xpath('(//div[@id="all-bots"]/div[@class="bot-card outline"])[1]'))
+    let displayed = await displayedBots.isDisplayed()
+
+    expect(displayed).toBe(true)
+
+    await driver.sleep(5000)
+})
+
+test('Draw button displays a selection of bots to choose from', async() => {
+    let drawBtn = await driver.findElement(By.id('draw'))
+    await drawBtn.click()
+
+    let randBots = await driver.findElement(By.xpath('(//section/div[@id = "choices"])'))
+    let botChoices = await randBots.isDisplayed()
+
+    expect(botChoices).toBe(true)
+
+    await driver.sleep(5000)
 })
